@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link} from "react-router-dom"
-import {Row, Col, Image, ListGroup, Button, Card} from 'react-bootstrap'
+import {Row, Col, Image, ListGroup, Card, Button} from 'react-bootstrap'
 import Rating from "../components/Rating"
 import products from "../products"
 
@@ -33,6 +33,39 @@ const ProductScreen = ({match}) => {
                 </ListGroup.Item>
 
               </ListGroup>
+            </Col>
+
+            <Col md={3}>
+              <Card>
+                <ListGroup variant ="flush">
+                  <ListGroup.Item>
+                    <Row>
+                      <Col>
+                        Price: 
+                      </Col>
+                      <Col>
+                        <strong>
+                          ${product.price}
+                        </strong>
+                      </Col>
+                    </Row>
+                  </ListGroup.Item>
+                  <ListGroup.Item>
+                    <Row>
+                      <Col>
+                        Status: 
+                      </Col>
+                      <Col>
+                        {product.countInStock> 0? "In Stock": "Out of Stock"}
+                      </Col>
+                    </Row>
+                  </ListGroup.Item>
+
+                  <ListGroup.Item>
+                    <Button className="btn-block" disabled={product.countInStock===0? true: false} type="button"> Add To Cart</Button>
+                  </ListGroup.Item>
+                </ListGroup>
+              </Card>
             </Col>
           </Row>
         </div>
